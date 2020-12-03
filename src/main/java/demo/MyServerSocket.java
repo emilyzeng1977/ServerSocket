@@ -9,11 +9,11 @@ import java.net.Socket;
 
 public class MyServerSocket {
     private ServerSocket server;
-    public MyServerSocket(String ipAddress) throws Exception {
+    public MyServerSocket(String ipAddress, int port) throws Exception {
         if (ipAddress != null && !ipAddress.isEmpty())
-            this.server = new ServerSocket(0, 1, InetAddress.getByName(ipAddress));
+            this.server = new ServerSocket(port, 1, InetAddress.getByName(ipAddress));
         else
-            this.server = new ServerSocket(0, 1, InetAddress.getLocalHost());
+            this.server = new ServerSocket(port, 1, InetAddress.getLocalHost());
     }
     private void listen() throws Exception {
         String data = null;
@@ -35,7 +35,7 @@ public class MyServerSocket {
         return this.server.getLocalPort();
     }
     public static void main(String[] args) throws Exception {
-        MyServerSocket app = new MyServerSocket(args[0]);
+        MyServerSocket app = new MyServerSocket(args[0], Integer.valueOf(args[1]));
         System.out.println("\r\nRunning Server: " +
                 "Host=" + app.getSocketAddress().getHostAddress() +
                 " Port=" + app.getPort());
