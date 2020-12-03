@@ -1,2 +1,2 @@
 # ServerSocket
-java -jar ./target/server-0.1.0.jar 127.0.0.1
+java -jar ./target/server-0.1.0.jar 127.0.0.1 9999
